@@ -1,66 +1,68 @@
 # Pizza Sales Analysis
 
-This repository contains SQL scripts and ETL workflows to create a **Pizza Sales Data Warehouse**, managing sales, inventory, ingredients, staff, and orders. It also includes analytical views for reporting and business insights.
+## Executive Summary
 
----
+This project analyses a full pizza restaurant operation — sales, inventory, and staffing — by designing a relational SQL Server data warehouse and building a four-page interactive Power BI dashboard on top of it. SQL views pre-join and aggregate order, ingredient, inventory, and staff-rota data to power revenue, cost, and workforce reporting, giving the business a single, queryable source of truth across sales performance, ingredient stock levels, labor cost, and customer behaviour.
 
-## **Database Overview**
 
-The database, `PizzaSalesDW`, captures the core entities of a pizza business:
+## Project Objectives
 
-- **Customers:** Customer information.
-- **Address:** Delivery addresses.
-- **Items:** Pizza/menu items with category, size, and price.
-- **Ingredients:** Ingredient details, weight, and price.
-- **Inventory:** Ingredient stock levels.
-- **Recipe:** Maps ingredients to menu items with required quantities.
-- **Orders:** Customer orders with item, quantity, and delivery details.
-- **Staff & Shifts:** Staff members, shifts, and hourly rates.
-- **Rotations:** Staff assigned to shifts on specific dates.
+- Design a normalised SQL Server database covering customers, orders, items, ingredients, inventory, staff, and shifts
+- Build analytical SQL views to pre-join and aggregate data for reporting
+- Track sales performance — revenue, order volume, order value, and product mix
+- Monitor ingredient usage and stock levels against inventory
+- Analyse staff scheduling and labor cost by shift and position
+- Understand customer ordering behaviour and delivery patterns
+- Visualise all of the above in an interactive, multi-page Power BI dashboard
 
----
+## Overview of the Data
 
-## **ETL & Data Processing**
+The database, **PizzaSalesDW**, is structured around eight core tables:
 
-- **ETL Implementation:** Used **SSIS** to extract, transform, and load data from source systems into the Data Warehouse.  
-- **Data Cleaning & Transformation:** Aggregated order data, mapped ingredients to recipes, and calculated inventory and ingredient costs.  
-- **Automation:** ETL packages automate loading of daily sales, stock, and staff rotation data.
+- **Customers** — customer ID and name
+- **Address** — delivery addresses linked to orders
+- **Items** — pizza/menu items, including SKU, category, size, and price
+- **Ingredients** — ingredient ID, name, weight, unit of measurement, and price
+- **Inventory** — stock quantity per ingredient
+- **Recipe** — maps ingredients and required quantities to each menu item
+- **Staff** — staff members, position, and hourly rate
+- **Shifts** / **Rotations** — shift definitions and the staff-to-shift schedule by date
+- **Orders** — each customer order, linking item, quantity, delivery flag, and address
 
----
+## Database Design & Analytical Views
 
-## **Analytical Views**
+Four SQL views sit on top of the base tables to simplify reporting and pre-compute key metrics:
 
-The SQL file also creates views for reporting and analysis:
+- **`query_overview1`** — Order Overview: joins Orders, Items, Address, and Customers into a single order-level table (item, category, price, delivery address, and time of order) — the base table for all sales analysis.
+- **`stock1`** — Stock & Ingredient Cost Analysis: joins Orders → Items → Recipe → Ingredients to compute ordered weight and ingredient cost per item, using `ingredient price ÷ ingredient weight` as the unit cost.
+- **`query_inventory1`** — Inventory Analysis: compares total ordered ingredient weight against on-hand inventory weight to calculate `remaining_weight` per ingredient.
+- **`query_staff1`** — Staff Cost Analysis: joins Rotations, Staff, and Shifts, calculating hours worked per shift (handling overnight shifts that cross midnight) and the resulting staff cost (`hours × hourly_rate`).
 
-1. **Order Overview (`query_overview1`):**  
-   Combines customer, order, item, and address data for a complete view of orders.
+## Power BI Dashboard
 
-2. **Stock & Ingredient Cost Analysis (`stock1`):**  
-   Calculates total ingredient usage, unit cost, and total ingredient cost per order based on recipes.
+The report is built as four linked pages, each driven by the SQL views above:
 
-3. **Inventory Analysis (`query_inventory1`):**  
-   Compares ingredient usage with inventory to compute remaining stock levels.
+### 1. Dashboard (Sales Overview)
+Headline sales KPIs — **Total Revenue, Total Orders, Avg Order Value, and Net Profit** — alongside sales by pizza category/name, order volume by hour, order type breakdown, and a geographic map of delivery cities, with slicers for interactive filtering.
 
-4. **Staff Cost Analysis (`query_staff1`):**  
-   Computes staff working hours per shift and total labor cost, including shifts spanning midnight.
+### 2. Inventory & Ingredient Cost
+Tracks **Total Ingredient Cost, Pizza Cost per item, and Most Used Ingredient**, alongside **Inventory Utilization %**, **Low Stock Count**, and **Percent Remaining** per ingredient — giving a clear view of stock health against ordered demand.
 
----
+### 3. Staff & Labor Cost
+Summarises **Total Staff Cost** and **Avg Hourly Cost**, broken down by staff position and hours worked per shift, to understand labor cost drivers across the rota.
 
-## **Purpose**
+### 4. Customer Insights
+A searchable customer order table (name, delivery address/city, items ordered) with slicer-based filtering, supporting lookups into individual customer ordering behaviour and delivery patterns.
 
-- Manage and track **sales, inventory, and ingredients** efficiently.  
-- Calculate **ingredient usage and costs** for cost control and pricing optimization.  
-- Analyse **staff allocation and labor costs** for workforce planning.  
-- Provide **ready-to-use views** for dashboards and reporting (Power BI, Tableau, etc.).
+## Tech Stack
 
----
+- **Database:** Microsoft SQL Server (T-SQL)
+- **Concepts:** Table design & foreign keys, analytical views, subqueries, CASE expressions, DATEDIFF-based shift calculations, cost/utilization calculated columns
+- **Visualization:** Power BI (DAX measures, interactive slicers, map visual, drill-through pages)
 
-## **Technologies**
+## Conclusion
 
-- **Database & SQL:** SQL Server / T-SQL  
-- **ETL:** Microsoft SSIS  
-- **BI / Reporting:** Power BI, Tableau (optional)  
+This project demonstrates an end-to-end SQL-to-BI workflow: a normalised relational schema, SQL views that translate raw transactional and operational data into report-ready metrics, and a Power BI dashboard that surfaces sales, inventory, staffing, and customer insights in one place — supporting decisions on pricing, stock replenishment, staffing levels, and customer/delivery strategy.
 
----
 
 [PowerBI Dashobaord Link](https://app.powerbi.com/view?r=eyJrIjoiOGFiMTg2ZjMtNWJjYi00YzkyLWIzNTctY2IxMmU2YjQyMTljIiwidCI6IjUxYTBhNjljLTBlNGYtNGIzZC1iNjQyLTEyZTAxMzE5ODYzNSIsImMiOjh9)
