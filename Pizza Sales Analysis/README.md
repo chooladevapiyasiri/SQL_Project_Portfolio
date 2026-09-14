@@ -26,7 +26,8 @@ The database, **PizzaSalesDW**, is structured around eight core tables:
 - **Inventory** — stock quantity per ingredient
 - **Recipe** — maps ingredients and required quantities to each menu item
 - **Staff** — staff members, position, and hourly rate
-- **Shifts** / **Rotations** — shift definitions and the staff-to-shift schedule by date
+- **Shifts** — shift definitions 
+- **Rotations** — the staff-to-shift schedule by date   
 - **Orders** — each customer order, linking item, quantity, delivery flag, and address
 
 ## Database Design & Analytical Views
