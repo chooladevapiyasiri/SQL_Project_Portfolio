@@ -17,7 +17,7 @@ This project analyses a full pizza restaurant operation — sales, inventory, an
 
 ## Overview of the Data
 
-The database, **PizzaSalesDW**, is structured around eight core tables:
+The database, **PizzaSalesDW**, is structured around ten core tables:
 
 - **Customers** — customer ID and name
 - **Address** — delivery addresses linked to orders
