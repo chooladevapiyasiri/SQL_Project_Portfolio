@@ -11,5 +11,11 @@ Welcome to my SQL Project Portfolio! This repository showcases a collection of S
 ## Contact
 
 **Chooladeva Piyasiri**
+
 Data Analyst | MSc Big Data Analytics
-📧 chooladeva.lp@gmail.com• 🔗 https://www.linkedin.com/in/chooladevapiyasiri/ • 🌐 https://chooladevapiyasiri.github.io/
+
+📧 chooladeva.lp@gmail.com
+
+🔗 https://www.linkedin.com/in/chooladevapiyasiri/ 
+
+🌐 https://chooladevapiyasiri.github.io/
