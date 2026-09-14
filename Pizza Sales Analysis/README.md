@@ -56,7 +56,7 @@ A searchable customer order table (name, delivery address/city, items ordered) w
 
 ## Tech Stack
 
-- **Database:** Microsoft SQL Server (T-SQL)
+- **Database:** Microsoft SQL Server
 - **Concepts:** Table design & foreign keys, analytical views, subqueries, CASE expressions, DATEDIFF-based shift calculations, cost/utilization calculated columns
 - **Visualization:** Power BI (DAX measures, interactive slicers, map visual, drill-through pages)
 
