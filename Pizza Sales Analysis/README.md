@@ -15,6 +15,10 @@ This project analyses a full pizza restaurant operation — sales, inventory, an
 - Understand customer ordering behaviour and delivery patterns
 - Visualise all of the above in an interactive, multi-page Power BI dashboard
 
+
+**Live Dashboard:** [View the interactive Power BI dashboard](https://app.powerbi.com/view?r=eyJrIjoiOGFiMTg2ZjMtNWJjYi00YzkyLWIzNTctY2IxMmU2YjQyMTljIiwidCI6IjUxYTBhNjljLTBlNGYtNGIzZC1iNjQyLTEyZTAxMzE5ODYzNSIsImMiOjh9)
+
+
 ## Overview of the Data
 
 The database, **PizzaSalesDW**, is structured around ten core tables:
@@ -65,6 +69,3 @@ A searchable customer order table (name, delivery address/city, items ordered) w
 
 This project demonstrates an end-to-end SQL-to-BI workflow: a normalised relational schema, SQL views that translate raw transactional and operational data into report-ready metrics, and a Power BI dashboard that surfaces sales, inventory, staffing, and customer insights in one place — supporting decisions on pricing, stock replenishment, staffing levels, and customer/delivery strategy.
 
-
-
-[PowerBI Dashobaord Link](https://app.powerbi.com/view?r=eyJrIjoiOGFiMTg2ZjMtNWJjYi00YzkyLWIzNTctY2IxMmU2YjQyMTljIiwidCI6IjUxYTBhNjljLTBlNGYtNGIzZC1iNjQyLTEyZTAxMzE5ODYzNSIsImMiOjh9)
