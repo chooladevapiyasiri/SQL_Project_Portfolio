@@ -5,6 +5,9 @@
 This project analyses a full pizza restaurant operation — sales, inventory, and staffing — by designing a relational SQL Server data warehouse and building a four-page interactive Power BI dashboard on top of it. SQL views pre-join and aggregate order, ingredient, inventory, and staff-rota data to power revenue, cost, and workforce reporting, giving the business a single, queryable source of truth across sales performance, ingredient stock levels, labor cost, and customer behaviour.
 
 
+**Live Dashboard:** [View the interactive Power BI dashboard](https://app.powerbi.com/view?r=eyJrIjoiOGFiMTg2ZjMtNWJjYi00YzkyLWIzNTctY2IxMmU2YjQyMTljIiwidCI6IjUxYTBhNjljLTBlNGYtNGIzZC1iNjQyLTEyZTAxMzE5ODYzNSIsImMiOjh9)
+
+
 ## Project Objectives
 
 - Design a normalised SQL Server database covering customers, orders, items, ingredients, inventory, staff, and shifts
@@ -14,10 +17,6 @@ This project analyses a full pizza restaurant operation — sales, inventory, an
 - Analyse staff scheduling and labor cost by shift and position
 - Understand customer ordering behaviour and delivery patterns
 - Visualise all of the above in an interactive, multi-page Power BI dashboard
-
-
-**Live Dashboard:** [View the interactive Power BI dashboard](https://app.powerbi.com/view?r=eyJrIjoiOGFiMTg2ZjMtNWJjYi00YzkyLWIzNTctY2IxMmU2YjQyMTljIiwidCI6IjUxYTBhNjljLTBlNGYtNGIzZC1iNjQyLTEyZTAxMzE5ODYzNSIsImMiOjh9)
-
 
 ## Overview of the Data
 
